@@ -1,10 +1,117 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
-<title>Erdner Websites</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enoch Erdner — Austin, Texas</title>
+<meta name="description" content="Enoch Erdner — software, tools and websites for businesses. Built, kept running, and updated on request. Serving Central Texas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  body { margin: 0; font: 16px/1.6 system-ui, sans-serif; background: #101014; color: #e8e5f2;
-          display: grid; place-items: center; min-height: 100vh; text-align: center; }
-  p { color: #9a93ae; }
+  :root{
+    --ink:#1b1a17;
+    --dim:#6a665e;
+    --faint:#9c978c;
+    --bg:#f3f0e9;
+    --rule:#d8d3c6;
+    --mark:#8a3a1e;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#efebe3; --dim:#a9a49a; --faint:#77726a;
+      --bg:#14130f; --rule:#2e2b25; --mark:#d0754d;
+    }
+  }
+  *{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    display:flex; align-items:center; justify-content:center;
+    padding:48px 28px;
+  }
+  main{width:100%; max-width:540px;}
+
+  .mark{
+    width:26px; height:26px; margin-bottom:38px;
+    border-top:2px solid var(--mark); border-left:2px solid var(--mark);
+  }
+
+  h1{
+    font-family:"Instrument Serif",Georgia,"Times New Roman",serif;
+    font-weight:400; font-size:clamp(44px,12vw,68px); line-height:.98;
+    letter-spacing:-.015em; margin:0 0 22px;
+  }
+
+  .says{
+    font-family:"Instrument Serif",Georgia,serif; font-style:italic;
+    font-size:clamp(20px,5vw,25px); line-height:1.4;
+    color:var(--dim); margin:0 0 40px; max-width:26ch;
+  }
+
+  hr{border:0; border-top:1px solid var(--rule); margin:0 0 34px;}
+
+  p{margin:0 0 20px; max-width:46ch;}
+  .quiet{color:var(--dim);}
+
+  .where{
+    font-size:14px; color:var(--faint); letter-spacing:.01em;
+    margin:0 0 44px; max-width:44ch;
+  }
+
+  .call{display:block; text-decoration:none; color:inherit; margin-bottom:6px;}
+  .call .lbl{
+    display:block; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--faint); margin-bottom:7px;
+  }
+  .call .num{
+    font-family:"Instrument Serif",Georgia,serif; font-size:clamp(32px,8vw,42px);
+    line-height:1.1; letter-spacing:-.01em; color:var(--ink);
+    border-bottom:2px solid var(--mark); padding-bottom:2px;
+    transition:color .15s ease;
+  }
+  .call:hover .num{color:var(--mark);}
+
+  .mail{
+    display:inline-block; margin-top:26px; font-size:15px;
+    color:var(--dim); text-decoration:none;
+    border-bottom:1px solid var(--rule); padding-bottom:1px;
+  }
+  .mail:hover{color:var(--ink);}
+
+  footer{
+    margin-top:56px; padding-top:20px; border-top:1px solid var(--rule);
+    font-size:12.5px; letter-spacing:.04em; color:var(--faint);
+  }
 </style>
-<h1>Erdner Websites</h1>
-<p>Not built yet.</p>
+</head>
+<body>
+<main>
+
+  <div class="mark" aria-hidden="true"></div>
+
+  <h1>Enoch Erdner</h1>
+
+  <p class="says">I build software.</p>
+
+  <hr>
+
+  <p>Software, tools and websites for businesses. I build it, keep it running, and update
+  it on request.</p>
+
+  <p class="where">Serving Central Texas.</p>
+
+  <a class="call" href="tel:+15122870113">
+    <span class="lbl">Call or text</span>
+    <span class="num">(512)&nbsp;287‑0113</span>
+  </a>
+
+  <a class="mail" href="mailto:enocherdner@gmail.com">enocherdner@gmail.com</a>
+
+  <footer>Enoch Erdner &nbsp;·&nbsp; Austin, Texas</footer>
+
+</main>
+</body>
+</html>
