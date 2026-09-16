@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Sample Monthly Report</title>
+<style>
+  @page { size: Letter; margin: 0; }
+  *{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html,body{ margin:0; padding:0; background:#fff; }
+  body{
+    font:11.5pt/1.62 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    color:#1b1b1f;
+  }
+  .page{
+    position:relative; width:8.5in; height:11in; padding:0.85in 0.95in 0.7in;
+    overflow:hidden;
+  }
+  /* The watermark: unmistakable, but deliberate rather than apologetic. */
+  .mark{
+    position:absolute; top:52%; left:50%;
+    transform:translate(-50%,-50%) rotate(-27deg);
+    font:700 118pt/1 "Helvetica Neue",Arial,sans-serif;
+    letter-spacing:.06em; color:#000; opacity:.045;
+    white-space:nowrap; pointer-events:none; z-index:0;
+  }
+  .inner{ position:relative; z-index:1; height:100%; display:flex; flex-direction:column; }
+
+  /* Letterhead */
+  .head{ display:flex; justify-content:space-between; align-items:flex-start;
+         border-bottom:1.5pt solid #1b1b1f; padding-bottom:11pt; margin-bottom:26pt; }
+  .co{ font:600 15pt/1.2 "Helvetica Neue",Arial,sans-serif; letter-spacing:-.01em; }
+  .co small{ display:block; font:400 8.5pt/1.5 "Helvetica Neue",Arial,sans-serif;
+             letter-spacing:.11em; text-transform:uppercase; color:#75757e; margin-top:5pt; }
+  .contact{ text-align:right; font:400 9pt/1.62 "Helvetica Neue",Arial,sans-serif; color:#55555e; }
+
+  .kicker{ font:600 8.5pt/1 "Helvetica Neue",Arial,sans-serif; letter-spacing:.13em;
+           text-transform:uppercase; color:#8a6d1f; margin-bottom:9pt; }
+  h1{ font:400 24pt/1.22 "Iowan Old Style",Palatino,Georgia,serif; margin:0 0 9pt; letter-spacing:-.01em; }
+  .sub{ font-size:11pt; color:#55555e; margin:0 0 6pt; }
+  .illus{ font:italic 9.5pt/1.5 "Iowan Old Style",Palatino,Georgia,serif; color:#8a6d1f;
+          margin:0 0 24pt; padding-bottom:16pt; border-bottom:.5pt solid #ddd; }
+
+  .salut{ margin:0 0 14pt; }
+  p{ margin:0 0 12pt; }
+
+  /* Figures */
+  .nums{ display:flex; gap:10pt; margin:18pt 0 20pt; }
+  .n{ flex:1; border:.75pt solid #d9d9e0; border-radius:4pt; padding:13pt 12pt; text-align:center;
+      background:#fafaf8; }
+  .n b{ display:block; font:600 27pt/1 "Helvetica Neue",Arial,sans-serif;
+        letter-spacing:-.02em; color:#1f6248; }
+  .n span{ display:block; font:400 7.8pt/1.35 "Helvetica Neue",Arial,sans-serif;
+           letter-spacing:.09em; text-transform:uppercase; color:#70707a; margin-top:6pt; }
+
+  h2{ font:600 10pt/1 "Helvetica Neue",Arial,sans-serif; letter-spacing:.1em;
+      text-transform:uppercase; color:#70707a; margin:20pt 0 9pt; }
+  .sign{ margin-top:16pt; }
+  .sign .name{ font:400 16pt/1.2 "Snell Roundhand","Apple Chancery",cursive; color:#1b1b1f; }
+
+  .foot{ margin-top:auto; padding-top:13pt; border-top:.5pt solid #ddd;
+         font:400 8pt/1.55 "Helvetica Neue",Arial,sans-serif; color:#85858e;
+         display:flex; justify-content:space-between; gap:20pt; }
+</style></head>
+<body>
+<div class="page">
+  <div class="mark">SAMPLE</div>
+  <div class="inner">
+
+    <div class="head">
+      <div class="co">Erdner Websites<small>Austin &middot; Central Texas</small></div>
+      <div class="contact">
+        Enoch Erdner<br>(512) 287-0113<br>enocherdner@gmail.com
+      </div>
+    </div>
+
+    <div class="kicker">Sample &middot; End-of-month note</div>
+    <h1>Your website, last month</h1>
+    <p class="sub">This is the note you get from me at the end of every month.</p>
+    <p class="illus">The business and the figures below are illustrative &mdash; they are here to show
+    you the shape of the note, not to report anybody's real numbers.</p>
+
+    <p class="salut">Morning &mdash;</p>
+    <p>Quick note on the website for <strong>Example Home Services</strong>.</p>
+
+    <div class="nums">
+      <div class="n"><b>11</b><span>Tapped your number</span></div>
+      <div class="n"><b>4</b><span>Sent an enquiry</span></div>
+      <div class="n"><b>137</b><span>People looked</span></div>
+    </div>
+
+    <p>Eleven people tapped your phone number straight off the site, and four filled in the form.
+    Those four came through to your inbox as they arrived, so you will have seen them already.</p>
+
+    <p>Busiest day was the 14th, a Saturday. Almost everyone is finding you on a phone rather than a
+    computer &mdash; that is normal, and the site is built for it.</p>
+
+    <h2>What I changed this month</h2>
+    <p>Put your two new photos up, updated the hours for the holiday weekend, and fixed the line you
+    asked about on the 9th. All of it live the same day you asked.</p>
+
+    <h2>Anything needed from you</h2>
+    <p>No. If something changes &mdash; your hours, your prices, a new service, an offer you want
+    running &mdash; text me and it will be live that day.</p>
+
+    <div class="sign">
+      <p style="margin-bottom:4pt">Thanks,</p>
+      <div class="name">Enoch</div>
+    </div>
+
+    <div class="foot">
+      <span>You will never get a number I cannot back up, or work listed that I did not do.
+      If a month is quiet, the note says so.</span>
+      <span style="white-space:nowrap">Erdner Websites</span>
+    </div>
+
+  </div>
+</div>
+</body></html>
