@@ -4,92 +4,126 @@
   @page { size: Letter; margin: 0; }
   *{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   html,body{ margin:0; padding:0; background:#fff; }
-  body{
-    font:11.5pt/1.62 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-    color:#1b1b1f;
+  :root{
+    --g:#1baf7a; --g-deep:#0f7350; --g-ink:#0d6144; --g-tint:#e7f8f0; --g-line:#b6e6d1;
+    --slate:#6b7280; --slate-ink:#4b5563; --slate-tint:#f1f3f6; --slate-line:#dfe3ea;
+    --amber:#b4441a; --amber-tint:#fdeee7;
+    --ink:#14151a; --body:#41424b; --muted:#797b87; --line:#e4e5ea;
   }
-  .page{
-    position:relative; width:8.5in; height:11in; padding:0.85in 0.95in 0.7in;
-    overflow:hidden;
-  }
-  /* The watermark: unmistakable, but deliberate rather than apologetic. */
-  .mark{
-    position:absolute; top:52%; left:50%;
-    transform:translate(-50%,-50%) rotate(-27deg);
-    font:700 118pt/1 "Helvetica Neue",Arial,sans-serif;
-    letter-spacing:.06em; color:#000; opacity:.045;
-    white-space:nowrap; pointer-events:none; z-index:0;
-  }
-  .inner{ position:relative; z-index:1; height:100%; display:flex; flex-direction:column; }
+  body{ font:11pt/1.58 "Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink); }
+  .page{ position:relative; width:8.5in; height:11in; overflow:hidden;
+         display:flex; flex-direction:column; }
+  .mark{ position:absolute; top:58%; left:50%;
+         transform:translate(-50%,-50%) rotate(-27deg);
+         font:800 118pt/1 "Helvetica Neue",Arial,sans-serif; letter-spacing:.06em;
+         color:#14151a; opacity:.045; white-space:nowrap; z-index:0; }
 
-  /* Letterhead */
-  .head{ display:flex; justify-content:space-between; align-items:flex-start;
-         border-bottom:1.5pt solid #1b1b1f; padding-bottom:11pt; margin-bottom:26pt; }
-  .co{ font:600 15pt/1.2 "Helvetica Neue",Arial,sans-serif; letter-spacing:-.01em; }
-  .co small{ display:block; font:400 8.5pt/1.5 "Helvetica Neue",Arial,sans-serif;
-             letter-spacing:.11em; text-transform:uppercase; color:#75757e; margin-top:5pt; }
-  .contact{ text-align:right; font:400 9pt/1.62 "Helvetica Neue",Arial,sans-serif; color:#55555e; }
+  .band{ position:relative; z-index:2;
+         background:linear-gradient(100deg,var(--g-deep) 0%,var(--g) 60%,#3fc191 100%);
+         color:#fff; padding:24pt 42pt 20pt; }
+  .band .row{ display:flex; justify-content:space-between; align-items:flex-start; gap:24pt; }
+  .co{ font:700 18pt/1.15 "Helvetica Neue",Arial,sans-serif; letter-spacing:-.02em; }
+  .co small{ display:block; font:600 7.6pt/1.5; letter-spacing:.16em;
+             text-transform:uppercase; opacity:.85; margin-top:5pt; }
+  .contact{ text-align:right; font:400 8.6pt/1.6; opacity:.95; }
 
-  .kicker{ font:600 8.5pt/1 "Helvetica Neue",Arial,sans-serif; letter-spacing:.13em;
-           text-transform:uppercase; color:#8a6d1f; margin-bottom:9pt; }
-  h1{ font:400 24pt/1.22 "Iowan Old Style",Palatino,Georgia,serif; margin:0 0 9pt; letter-spacing:-.01em; }
-  .sub{ font-size:11pt; color:#55555e; margin:0 0 6pt; }
-  .illus{ font:italic 9.5pt/1.5 "Iowan Old Style",Palatino,Georgia,serif; color:#8a6d1f;
-          margin:0 0 24pt; padding-bottom:16pt; border-bottom:.5pt solid #ddd; }
+  .body{ position:relative; z-index:1; flex:1; padding:22pt 42pt 0;
+         display:flex; flex-direction:column; }
 
-  .salut{ margin:0 0 14pt; }
-  p{ margin:0 0 12pt; }
+  .kicker{ display:inline-block; font:700 7.2pt/1; letter-spacing:.14em;
+           text-transform:uppercase; color:var(--amber); background:var(--amber-tint);
+           padding:5pt 9pt; border-radius:20pt; margin-bottom:10pt; }
+  h1{ font:700 23pt/1.18 "Helvetica Neue",Arial,sans-serif; margin:0 0 7pt; letter-spacing:-.025em; }
+  .sub{ font-size:11pt; color:var(--body); margin:0 0 4pt; }
+  .illus{ font:italic 9pt/1.5; color:var(--muted); margin:0 0 16pt; }
+  p{ margin:0 0 10pt; color:var(--body); }
+  strong{ color:var(--ink); }
 
-  /* Figures */
-  .nums{ display:flex; gap:10pt; margin:18pt 0 20pt; }
-  .n{ flex:1; border:.75pt solid #d9d9e0; border-radius:4pt; padding:13pt 12pt; text-align:center;
-      background:#fafaf8; }
-  .n b{ display:block; font:600 27pt/1 "Helvetica Neue",Arial,sans-serif;
-        letter-spacing:-.02em; color:#1f6248; }
-  .n span{ display:block; font:400 7.8pt/1.35 "Helvetica Neue",Arial,sans-serif;
-           letter-spacing:.09em; text-transform:uppercase; color:#70707a; margin-top:6pt; }
+  /* ── The green block: everything here is a lead. That is the whole point. ── */
+  .leads{ background:var(--g-tint); border:1pt solid var(--g-line);
+          border-radius:10pt; padding:16pt 18pt 15pt; margin:4pt 0 12pt; }
+  .leads .hdr{ display:flex; align-items:baseline; gap:9pt; margin-bottom:13pt; }
+  .leads .dot{ width:9pt; height:9pt; border-radius:50%; background:var(--g); flex:none; }
+  .leads .ttl{ font:700 8.4pt/1; letter-spacing:.13em; text-transform:uppercase; color:var(--g-ink); }
+  .split{ display:flex; align-items:stretch; gap:14pt; }
+  .hero{ flex:none; text-align:center; padding-right:16pt; border-right:1pt dashed var(--g-line); }
+  .hero b{ display:block; font:700 46pt/.92 "Helvetica Neue",Arial,sans-serif;
+           letter-spacing:-.045em; color:var(--g-ink); }
+  .hero span{ display:block; font:600 7.8pt/1.3; letter-spacing:.09em;
+              text-transform:uppercase; color:var(--g-ink); opacity:.78; margin-top:7pt; }
+  .two{ flex:1; display:flex; gap:12pt; }
+  .t{ flex:1; background:#fff; border:.75pt solid var(--g-line); border-radius:7pt;
+      padding:11pt 12pt; }
+  .t b{ display:block; font:700 24pt/1 "Helvetica Neue",Arial,sans-serif;
+        letter-spacing:-.03em; color:var(--g-ink); }
+  .t span{ display:block; font:600 7.4pt/1.35; letter-spacing:.08em;
+           text-transform:uppercase; color:var(--muted); margin-top:6pt; }
 
-  h2{ font:600 10pt/1 "Helvetica Neue",Arial,sans-serif; letter-spacing:.1em;
-      text-transform:uppercase; color:#70707a; margin:20pt 0 9pt; }
-  .sign{ margin-top:16pt; }
-  .sign .name{ font:400 16pt/1.2 "Snell Roundhand","Apple Chancery",cursive; color:#1b1b1f; }
+  /* Context, deliberately grey — it is not a lead */
+  .ctx{ display:flex; align-items:center; gap:12pt; background:var(--slate-tint);
+        border:.75pt solid var(--slate-line); border-radius:8pt; padding:11pt 16pt; margin:0 0 14pt; }
+  .ctx b{ font:700 19pt/1 "Helvetica Neue",Arial,sans-serif; color:var(--slate-ink);
+          letter-spacing:-.02em; flex:none; }
+  .ctx .lbl{ font:600 7.4pt/1.3; letter-spacing:.09em; text-transform:uppercase;
+             color:var(--slate); flex:none; }
+  .ctx .say{ font-size:9.2pt; color:var(--body); border-left:1pt solid var(--slate-line);
+             padding-left:12pt; }
+  .ctx .say b2{ color:var(--g-ink); font-weight:700; }
 
-  .foot{ margin-top:auto; padding-top:13pt; border-top:.5pt solid #ddd;
-         font:400 8pt/1.55 "Helvetica Neue",Arial,sans-serif; color:#85858e;
-         display:flex; justify-content:space-between; gap:20pt; }
+  h2{ font:700 8.4pt/1; letter-spacing:.12em; text-transform:uppercase; color:var(--g-ink);
+      margin:14pt 0 7pt; padding-left:9pt; border-left:2.5pt solid var(--g); }
+
+  .sign{ margin-top:12pt; }
+  .sign .name{ font:400 18pt/1.1 "Snell Roundhand","Apple Chancery",cursive; color:var(--g-ink); }
+  .promise{ margin-top:auto; margin-bottom:0; background:var(--slate-tint);
+            border-left:2.5pt solid var(--slate); border-radius:0 6pt 6pt 0;
+            padding:11pt 15pt; font-size:9pt; color:var(--body); }
+  .promise b{ color:var(--ink); }
+  .foot{ background:var(--ink); color:#b9bcc6; font:400 7.6pt/1.5; padding:9pt 42pt;
+         display:flex; justify-content:space-between; z-index:2; position:relative; }
+  .foot b{ color:#fff; font-weight:600; }
 </style></head>
 <body>
 <div class="page">
   <div class="mark">SAMPLE</div>
-  <div class="inner">
 
-    <div class="head">
+  <div class="band">
+    <div class="row">
       <div class="co">Erdner Websites<small>Austin &middot; Central Texas</small></div>
-      <div class="contact">
-        Enoch Erdner<br>(512) 287-0113<br>enocherdner@gmail.com
+      <div class="contact">Enoch Erdner<br>(512) 287-0113<br>enocherdner@gmail.com</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <span class="kicker">Sample &middot; end-of-month note</span>
+    <h1>Your website, last month</h1>
+    <p class="sub">This is the note you get from me at the end of every month.</p>
+    <p class="illus">The business and the figures below are illustrative &mdash; they show you the
+    shape of the note, not anybody's real numbers.</p>
+
+    <p style="color:var(--ink);font-size:11pt;margin-bottom:8pt">Morning &mdash; quick note on the
+    website for <strong>Example Home Services</strong>.</p>
+
+    <div class="leads">
+      <div class="hdr"><span class="dot"></span><span class="ttl">People who tried to reach you</span></div>
+      <div class="split">
+        <div class="hero"><b>15</b><span>New leads</span></div>
+        <div class="two">
+          <div class="t"><b>11</b><span>Tapped your number</span></div>
+          <div class="t"><b>4</b><span>Sent an enquiry</span></div>
+        </div>
       </div>
     </div>
 
-    <div class="kicker">Sample &middot; End-of-month note</div>
-    <h1>Your website, last month</h1>
-    <p class="sub">This is the note you get from me at the end of every month.</p>
-    <p class="illus">The business and the figures below are illustrative &mdash; they are here to show
-    you the shape of the note, not to report anybody's real numbers.</p>
-
-    <p class="salut">Morning &mdash;</p>
-    <p>Quick note on the website for <strong>Example Home Services</strong>.</p>
-
-    <div class="nums">
-      <div class="n"><b>11</b><span>Tapped your number</span></div>
-      <div class="n"><b>4</b><span>Sent an enquiry</span></div>
-      <div class="n"><b>137</b><span>People looked</span></div>
+    <div class="ctx">
+      <b>137</b><span class="lbl">People<br>looked</span>
+      <span class="say">Roughly <b2>one in nine</b2> people who found your site tried to get hold of
+      you. Everything green above is a potential job; this grey number is just how many arrived.</span>
     </div>
 
-    <p>Eleven people tapped your phone number straight off the site, and four filled in the form.
-    Those four came through to your inbox as they arrived, so you will have seen them already.</p>
-
-    <p>Busiest day was the 14th, a Saturday. Almost everyone is finding you on a phone rather than a
-    computer &mdash; that is normal, and the site is built for it.</p>
+    <p>Those four form enquiries came through to your inbox as they arrived, so you will have seen
+    them already. Busiest day was the 14th, a Saturday. Almost everyone is finding you on a phone
+    rather than a computer &mdash; that is normal, and the site is built for it.</p>
 
     <h2>What I changed this month</h2>
     <p>Put your two new photos up, updated the hours for the holiday weekend, and fixed the line you
@@ -100,16 +134,19 @@
     running &mdash; text me and it will be live that day.</p>
 
     <div class="sign">
-      <p style="margin-bottom:4pt">Thanks,</p>
+      <p style="margin-bottom:2pt">Thanks,</p>
       <div class="name">Enoch</div>
     </div>
 
-    <div class="foot">
-      <span>You will never get a number I cannot back up, or work listed that I did not do.
-      If a month is quiet, the note says so.</span>
-      <span style="white-space:nowrap">Erdner Websites</span>
+    <div class="promise">
+      <b>What this note will never contain:</b> a number I cannot back up, or work listed that I did
+      not do. If a month is quiet, it says so.
     </div>
+  </div>
 
+  <div class="foot">
+    <span><b>Erdner Websites</b> &mdash; websites for local businesses, built and looked after.</span>
+    <span>(512) 287-0113</span>
   </div>
 </div>
 </body></html>
