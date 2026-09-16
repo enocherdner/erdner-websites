@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>What you get</title>
+<style>
+  @page { size: Letter; margin: 0; }
+  *{ box-sizing:border-box; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  html,body{ margin:0; padding:0; background:#fff; }
+  :root{
+    --g:#1baf7a; --g-mid:#16a06f; --g-deep:#0d6144; --g-ink:#0b5239;
+    --g-tint:#e3f7ee; --g-tint2:#cdf0e2; --g-line:#a5e3c9;
+    --amber-ink:#8a5d00; --amber-tint:#fff4dd;
+    --slate:#7c8494; --slate-ink:#4a5261; --slate-tint:#eef1f5; --slate-line:#d7dce5;
+    --ink:#11131a; --body:#3d4049; --muted:#767a88;
+  }
+  body{ font:10pt/1.48 "Helvetica Neue",Helvetica,Arial,sans-serif; color:var(--ink); }
+  .page{ position:relative; width:8.5in; height:11in; overflow:hidden;
+         display:flex; flex-direction:column; }
+
+  .band{ background:linear-gradient(105deg,var(--g-deep) 0%,var(--g-mid) 52%,#45c99a 100%);
+         color:#fff; padding:13pt 38pt 11pt; }
+  .band .row{ display:flex; justify-content:space-between; align-items:flex-start; gap:20pt; }
+  .co{ font:700 16pt/1.15 "Helvetica Neue",Arial,sans-serif; letter-spacing:-.02em; }
+  .co small{ display:block; font:600 6.8pt/1.5; letter-spacing:.16em;
+             text-transform:uppercase; opacity:.85; margin-top:4pt; }
+  .contact{ text-align:right; font:400 7.8pt/1.55; opacity:.95; }
+
+  .body{ flex:1; padding:10pt 38pt 0; display:flex; flex-direction:column; }
+  .topline{ display:flex; justify-content:space-between; align-items:center; margin-bottom:7pt; }
+  .kicker{ font:700 6.6pt/1; letter-spacing:.14em; text-transform:uppercase;
+           color:var(--amber-ink); background:var(--amber-tint); padding:4pt 8pt; border-radius:20pt; }
+  .period{ font:600 7.6pt/1; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+  h1{ font:700 16.5pt/1.12 "Helvetica Neue",Arial,sans-serif; margin:0 0 4pt; letter-spacing:-.025em; }
+  .lede{ font-size:8.8pt; color:var(--body); margin:0 0 9pt; }
+  p{ margin:0 0 7pt; color:var(--body); }
+  strong{ color:var(--ink); }
+
+  /* Price block */
+  .price{ display:flex; gap:10pt; margin:0 0 9pt; }
+  .pcard{ flex:1; border-radius:9pt; padding:9pt 13pt 10pt; }
+  .p1{ background:var(--g-deep); color:#fff; }
+  .p2{ background:linear-gradient(135deg,var(--g-tint) 0%,var(--g-tint2) 100%);
+       border:1pt solid var(--g-line); }
+  .pcard .plab{ font:700 6.8pt/1; letter-spacing:.13em; text-transform:uppercase;
+                opacity:.85; margin-bottom:7pt; }
+  .p2 .plab{ color:var(--g-ink); opacity:1; }
+  .pcard b{ display:block; font:700 24pt/1 "Helvetica Neue",Arial,sans-serif; letter-spacing:-.04em; }
+  .p2 b{ color:var(--g-deep); }
+  .pcard .sub{ font:400 7.8pt/1.4; margin-top:6pt; opacity:.88; }
+  .p2 .sub{ color:var(--body); opacity:1; }
+
+  h2{ font:700 7.2pt/1; letter-spacing:.12em; text-transform:uppercase; color:var(--g-ink);
+      margin:0 0 5pt; padding-left:8pt; border-left:2.5pt solid var(--g); }
+  .cols{ display:flex; gap:13pt; margin-bottom:7pt; }
+  .cols > div{ flex:1; }
+  ul{ margin:0; padding-left:0; list-style:none; }
+  li{ position:relative; padding-left:14pt; margin-bottom:3pt; font-size:8pt;
+      line-height:1.38; color:var(--body); }
+  li::before{ content:"✓"; position:absolute; left:0; top:0; color:var(--g);
+              font-weight:700; font-size:9pt; }
+  li b{ color:var(--ink); }
+  ul.no li::before{ content:"—"; color:var(--slate); font-weight:700; }
+
+  .strip{ background:var(--slate-tint); border:.75pt solid var(--slate-line);
+          border-radius:8pt; padding:7pt 11pt; margin:0 0 7pt; font-size:8pt; line-height:1.42; color:var(--body); }
+  .strip b{ color:var(--ink); }
+  .strip .t{ font:700 7.2pt/1; letter-spacing:.12em; text-transform:uppercase;
+             color:var(--slate-ink); margin-bottom:6pt; display:block; }
+
+  .green{ background:var(--g-tint); border-left:2.5pt solid var(--g); border-radius:0 6pt 6pt 0;
+          padding:7pt 11pt; font-size:8pt; line-height:1.4; color:var(--body); margin:0 0 7pt; }
+  .green b{ color:var(--g-ink); }
+
+  .steps{ display:flex; gap:9pt; margin:0 0 8pt; }
+  .st{ flex:1; border:.75pt solid var(--g-line); border-radius:8pt; padding:7pt 9pt; }
+  .st .n{ display:inline-grid; place-items:center; width:14pt; height:14pt; border-radius:50%;
+          background:var(--g); color:#fff; font:700 7.6pt/1; margin-bottom:5pt; }
+  .st p{ margin:0; font-size:7.5pt; line-height:1.35; }
+  .st b{ display:block; font-size:8.6pt; color:var(--ink); margin-bottom:2pt; }
+
+  .foot{ background:var(--ink); color:#aeb4c2; font:400 6.8pt/1.5; padding:6pt 38pt;
+         display:flex; justify-content:space-between; margin-top:auto; }
+  .foot b{ color:#fff; font-weight:600; }
+</style></head>
+<body>
+<div class="page">
+
+  <div class="band">
+    <div class="row">
+      <div class="co">Enoch Erdner<small>Websites &amp; software &middot; Austin, Texas</small></div>
+      <div class="contact">(512) 287-0113<br>enocherdner@gmail.com<br>Driftwood &middot; Hays County</div>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="topline">
+      <span class="kicker">Prepared for</span>
+      <span class="period">Texas Elite Air Conditioning &amp; Heating</span>
+    </div>
+    <h1>Your website &mdash; what you get</h1>
+    <p class="lede">Everything included, and everything it costs. No contract and nothing to sign.</p>
+
+    <div class="price">
+      <div class="pcard p1">
+        <div class="plab">Today, one time</div>
+        <b>$500</b>
+        <div class="sub">To buy the website. Nothing else to pay today.</div>
+      </div>
+      <div class="pcard p2">
+        <div class="plab">Every month</div>
+        <b>$87</b>
+        <div class="sub">Starts one month from today. Cancel any time, no notice, no fee.</div>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <h2>The $500 &mdash; what you own</h2>
+        <ul>
+          <li><b>Already built and already live</b> &mdash; made for a phone, because that is where
+          nearly everyone will see it</li>
+          <li><b>Your phone number front and centre</b> &mdash; one tap and they are calling you</li>
+          <li><b>Tap to call</b> and <b>tap to email</b> &mdash; one press and they are calling you</li>
+          <li><b>A quote form</b> that sends straight to your inbox with their name, phone, town and
+          what they need</li>
+          <li><b>Your own name on the internet</b> &mdash; yourname.com, set up and paid for as part of your monthly</li>
+          <li><b>Every detail checked</b> against what you have already published</li>
+        </ul>
+      </div>
+      <div>
+        <h2>The $87 a month</h2>
+        <ul>
+          <li><b>Changes, live the same day you ask.</b> Hours, prices, a new service, photos, an
+          offer &mdash; text me and it is done that day, as often as you like</li>
+          <li><b>A report at the end of every month</b> showing <b>how many people tapped your
+          phone number</b> and how many sent a quote request</li>
+          <li><b>Hosting and the technical side</b>, handled</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="green">
+      <b>About the monthly report:</b> you will always know whether the website is bringing you work.
+      If a month is quiet, the report says so.
+    </div>
+
+    <div class="strip">
+      <span class="t">The domain name</span>
+      <b>Included.</b> The domain and the hosting are registered, paid for and renewed by me as part
+      of your monthly, so there is nothing for you to set up and nothing to remember.
+      <b>The name is yours</b> &mdash; if you ever want to take the website elsewhere, I will transfer
+      it to you at no charge.
+    </div>
+
+    <div class="cols">
+      <div>
+        <h2>Not included</h2>
+        <ul class="no">
+          <li><b>Paid advertising</b> or Google Ads</li>
+          <li><b>Social media</b> posting</li>
+          <li><b>A booking or payment system</b></li>
+          <li><b>Stock photographs</b></li>
+        </ul>
+      </div>
+      <div>
+        <h2>If you stop the monthly</h2>
+        <ul class="no">
+          <li><b>The website stays up.</b> The hosting is free, so it keeps working</li>
+          <li><b>The domain becomes yours.</b> I transfer it over, and the renewal &mdash; about $13
+          a year &mdash; is yours from then on</li>
+          <li><b>Changes stop being included</b> &mdash; they become a one-off price when you want one</li>
+          <li><b>The monthly report stops</b></li>
+          <li><b>You can start it again</b> at any time</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>How it works from here</h2>
+    <div class="steps">
+      <div class="st"><span class="n">1</span><b>You say yes</b>
+        <p>Pay the $500 by card through a secure link. A receipt is emailed straight away.</p></div>
+      <div class="st"><span class="n">2</span><b>We pick your name</b>
+        <p>You choose it, I register it the same day. Nothing for you to set up.</p></div>
+      <div class="st"><span class="n">3</span><b>On your own name by tomorrow</b>
+        <p>Send photos and your logo and they go on too.</p></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>See it as it stands: <b>enocherdner.github.io/texas-elite-air-conditioning-and-heating</b></span>
+    <span style="white-space:nowrap">No contract &middot; cancel any time</span>
+  </div>
+</div>
+</body></html>
